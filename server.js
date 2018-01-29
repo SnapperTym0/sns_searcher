@@ -7,9 +7,12 @@ function start(route, handle){
 
     function onRequest(request, response){
         
-        const pathname = url.parse(request.url).pathname.replace('.html', '');
+        const parse = url.parse(request.url, true);
+        const pathname = parse.pathname.replace('.html', '');
+        const parameters = parse.query;
         var postData = '';
         console.log('Request for ' + pathname + ' recieved.');
+        console.log('Parameters for ' + parameters.year + ' recieved.');
 
         request.setEncoding('utf8');
 
